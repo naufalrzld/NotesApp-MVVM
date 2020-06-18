@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">NoteApps</string>
+    <string name="hint_title">Title</string>
+    <string name="btn_title_save">Save</string>
+    <string name="hint_note_description">Note Description</string>
+    <string name="tv_empty">Empty</string>
+</resources>
