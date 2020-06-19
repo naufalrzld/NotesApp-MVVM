@@ -6,7 +6,7 @@
         <import type="android.view.View" />
         <variable
             name="viewmodel"
-            type="com.example.noteapps.MainViewModel" />
+            type="com.example.noteapps.screen.main.MainViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
             android:id="@+id/rv_list"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:visibility="@={safeUnbox(viewmodel.empty) ? View.GONE : View.VISIBLE}"
+            android:visibility="@{safeUnbox(viewmodel.empty) ? View.GONE : View.VISIBLE}"
             tools:listitem="@layout/note_item_list"
             tools:itemCount="5"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -30,7 +30,7 @@
             android:textSize="16sp"
             android:fontFamily="@font/rubik_light"
             android:text="@string/tv_empty"
-            android:visibility="@={safeUnbox(viewmodel.empty) ? View.GONE : View.VISIBLE}"
+            android:visibility="@{safeUnbox(viewmodel.empty) ? View.VISIBLE : View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,6 +43,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:src="@drawable/ic_add_white_24dp"
+            android:onClick="@{() -> viewmodel.onEventAdd()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

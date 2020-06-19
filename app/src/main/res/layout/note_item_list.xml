@@ -4,7 +4,7 @@
     <data>
         <variable
             name="noteData"
-            type="com.example.noteapps.NoteData" />
+            type="com.example.noteapps.db.NoteData" />
     </data>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -43,17 +43,6 @@
                 android:fontFamily="@font/rubik_light"
                 android:text="@={noteData.noteDescription}"
                 tools:text="Note Description" />
-
-            <TextView
-                android:id="@+id/tv_date_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:textSize="12sp"
-                android:fontFamily="@font/rubik_light"
-                android:text="@={noteData.noteDate}"
-                tools:text="17/06/2020 19:00" />
 
         </RelativeLayout>
 

@@ -3,7 +3,7 @@ package com.example.noteapps.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.noteapps.NoteData
+import com.example.noteapps.db.NoteData
 import com.example.noteapps.databinding.NoteItemListBinding
 
 class NoteAdapter : RecyclerView.Adapter<NoteAdapter.ViewHolder>() {
