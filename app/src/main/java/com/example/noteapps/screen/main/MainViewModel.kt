@@ -1,6 +1,5 @@
 package com.example.noteapps.screen.main
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,20 +11,13 @@ class MainViewModel(private val noteRepository: NoteRepository) : ViewModel() {
     val empty: LiveData<Boolean>
         get() = _empty
 
-    private val _notesLive = MutableLiveData<List<NoteData>>()
-    val notesLive: LiveData<List<NoteData>>
-        get() = _notesLive
+    var notesLive: LiveData<List<NoteData>> = noteRepository.getAllNotes()
 
     private val _eventAdd = MutableLiveData<Boolean>()
     val eventAdd: LiveData<Boolean>
         get() = _eventAdd
 
     init {
-        fetchRepo()
-    }
-
-    private fun fetchRepo() {
-        _notesLive.value = noteRepository.getAllNotes()
         checkEmpty()
     }
 

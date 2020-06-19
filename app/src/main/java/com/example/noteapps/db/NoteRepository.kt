@@ -1,15 +1,16 @@
 package com.example.noteapps.db
 
 import android.os.AsyncTask
+import androidx.lifecycle.LiveData
 
 class NoteRepository(private val noteDataDao: NoteDataDao) {
-    private val notes: List<NoteData> = noteDataDao.getNotes()
+    private val notes: LiveData<List<NoteData>> = noteDataDao.getNotes()
 
     fun insert(note: NoteData) {
         InsertNoteAsyncTask(noteDataDao).execute(note)
     }
 
-    fun getAllNotes(): List<NoteData> {
+    fun getAllNotes(): LiveData<List<NoteData>> {
         return notes
     }
 

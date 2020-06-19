@@ -9,19 +9,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.noteapps.db.NoteData
 import com.example.noteapps.R
 import com.example.noteapps.databinding.ActivityAddNoteBinding
+import org.koin.android.ext.android.inject
 
 class AddNoteActivity : AppCompatActivity() {
-    private lateinit var addNoteViewModel: AddNoteViewModel
-    private lateinit var viewModelFactory: AddNoteViewModelFactory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding: ActivityAddNoteBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_note)
-
-        viewModelFactory = AddNoteViewModelFactory(intent.getParcelableExtra("note_data"))
-        addNoteViewModel = ViewModelProvider(this, viewModelFactory).get(AddNoteViewModel::class.java)
-        binding.viewModel = addNoteViewModel
-        binding.lifecycleOwner = this
 
         binding.btnSave.setOnClickListener {
             val title = binding.etTitle.text.toString()

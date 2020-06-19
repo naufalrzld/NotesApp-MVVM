@@ -16,11 +16,12 @@ import com.example.noteapps.db.NoteData
 import com.example.noteapps.db.NoteDatabase
 import com.example.noteapps.db.NoteRepository
 import com.example.noteapps.screen.add.AddNoteActivity
+import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mainBinding: ActivityMainBinding
-    private lateinit var mainViewModel: MainViewModel
-    private lateinit var noteAdapter: NoteAdapter
+    private val mainViewModel: MainViewModel by inject()
+    private val noteAdapter: NoteAdapter by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,14 +29,8 @@ class MainActivity : AppCompatActivity() {
             R.layout.activity_main
         )
 
-        val dao = NoteDatabase.getInstance(this).noteDataDao()
-        val repository = NoteRepository(dao)
-        val factory = MainViewModelFactory(repository)
-        mainViewModel = ViewModelProvider(this, factory).get(MainViewModel::class.java)
         mainBinding.viewmodel = mainViewModel
         mainBinding.lifecycleOwner = this
-
-        noteAdapter = NoteAdapter()
 
         mainBinding.rvList.apply {
             setHasFixedSize(true)

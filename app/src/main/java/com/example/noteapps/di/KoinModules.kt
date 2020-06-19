@@ -1,10 +1,8 @@
 package com.example.noteapps.di
 
 import com.example.noteapps.adapter.NoteAdapter
-import com.example.noteapps.db.NoteData
 import com.example.noteapps.db.NoteDatabase
 import com.example.noteapps.db.NoteRepository
-import com.example.noteapps.screen.add.AddNoteViewModel
 import com.example.noteapps.screen.main.MainViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
@@ -13,7 +11,6 @@ import org.koin.dsl.module
 val dbModule = module {
     single { NoteDatabase.getInstance(androidContext()) }
     factory { get<NoteDatabase>().noteDataDao() }
-    factory { NoteData }
 }
 
 val repositoryModule = module {
@@ -23,5 +20,4 @@ val repositoryModule = module {
 val uiModule = module {
     factory { NoteAdapter() }
     viewModel { MainViewModel(get()) }
-    viewModel { AddNoteViewModel(get()) }
 }
